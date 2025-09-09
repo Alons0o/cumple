@@ -1,132 +1,33 @@
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    overflow: hidden;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    color: #fff;
+/* ... el resto de tu código CSS ... */
+
+.boton-enlace {
+  background: #ff5e78;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none; /* quita el subrayado del enlace */
 }
 
-h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 5px #ff5e78;
-    z-index: 2; /* Asegura que el título esté por encima de otros elementos, como los globos. */
+.boton-enlace:hover {
+  background: #ff2e50;
+  transform: scale(1.1);
 }
 
-p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    z-index: 2;
+.secret-page {
+  /* Oculta los globos flotantes en la página inicial */
+  /* Los globos del script se verán en la página secreto.html */
 }
 
-button {
-    background: #ff5e78;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-    z-index: 2;
-}
-
-button:hover {
-    background: #ff2e50;
-    transform: scale(1.1);
-}
-
-.hidden-message {
-    display: none;
-    margin-top: 20px;
-    font-size: 1.4rem;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 15px;
-    text-shadow: 1px 1px 3px #333;
-    z-index: 3; /* Asegura que el mensaje oculto aparezca por encima del resto. */
-    text-align: center;
-    line-height: 1.5; /* Mejora la legibilidad del texto. */
-}
-
-/* Contenedor para los globos */
-#balloons {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0; /* Coloca los globos en el fondo. */
-    pointer-events: none; /* Permite hacer clic en los elementos que están detrás de los globos. */
-}
-
-.balloon {
-    position: absolute;
-    bottom: -150px;
-    width: 60px;
-    height: 80px;
-    background: red;
-    border-radius: 50%;
-    animation: float 10s linear infinite;
-}
-
-.balloon::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 60px;
-    background: #fff;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.8;
-    }
-    50% {
-        transform: translateY(-60vh) rotate(5deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-120vh) rotate(-5deg);
-        opacity: 0.8;
-    }
-}
-
-/* Estilos y animación para tu personaje */
-#personaje-animado {
-    width: 100px;
-    height: 100px;
-    background-image: url('chico2.png');
-    background-repeat: no-repeat;
-    position: absolute;
-    bottom: 50px;
-    left: -100px;
-    z-index: 1; /* Coloca al personaje entre los globos y el contenido principal. */
-}
-
-@keyframes caminar {
-    from { background-position: 0 0; }
-    to { background-position: -400px 0; }
-}
-
-@keyframes leer {
-    from { background-position: -500px 0; }
-    to { background-position: -600px 0; }
-}
-
-@keyframes moverHorizontal {
-    0% { left: -100px; }
-    100% { left: calc(50% - 50px); }
+#secret-message {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 15px;
+  text-shadow: 1px 1px 3px #333;
+  text-align: center;
 }
