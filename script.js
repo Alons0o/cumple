@@ -1,17 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Esto se ejecuta cuando el HTML está cargado
-    
-    // Si estamos en la página del secreto, se lanzan confeti y globos
+    // Si estamos en la página del secreto, se activan el confeti y los videos
     if (document.body.classList.contains('secret-page')) {
         launchConfetti();
-        createBalloons();
-
-        // Manejador del botón para reproducir videos
+        
         const playButton = document.getElementById('play-video-btn');
         const videoChicoContainer = document.getElementById('video-chico-container');
         const videoChico = document.getElementById('animacion-chico');
         
-        // Obtenemos los nuevos elementos del video de la chica
         const videoChicaContainer = document.getElementById('video-chica-container');
         const videoChica = document.getElementById('animacion-chica');
 
@@ -20,12 +15,57 @@ document.addEventListener('DOMContentLoaded', () => {
                 videoChicoContainer.style.display = 'block';
                 videoChico.play();
                 
-                // Muestra y reproduce el video de la chica también
                 videoChicaContainer.style.display = 'block';
                 videoChica.play();
             });
         }
     }
+    
+    // Globos se crean en ambas páginas
+    createBalloons();
 });
 
-// ... el resto de tus funciones (showMessage, launchConfetti, etc.)
+// Todas las funciones deben estar fuera de 'DOMContentLoaded'
+function launchConfetti() {
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement("div");
+        confetti.style.position = "fixed";
+        confetti.style.width = "8px";
+        confetti.style.height = "8px";
+        confetti.style.backgroundColor = randomColor();
+        confetti.style.top = "-10px";
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.opacity = 0.7;
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        document.body.appendChild(confetti);
+
+        let fall = setInterval(() => {
+            let top = parseFloat(confetti.style.top);
+            if (top > window.innerHeight) {
+                clearInterval(fall);
+                confetti.remove();
+            } else {
+                confetti.style.top = top + 4 + "px";
+                confetti.style.left =
+                    parseFloat(confetti.style.left) + (Math.random() - 0.5) * 4 + "px";
+            }
+        }, 20);
+    }
+}
+
+function randomColor() {
+    const colors = ["#ff5e78", "#feca57", "#48dbfb", "#1dd1a1", "#f368e0"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function createBalloons() {
+    const colors = ["#ff6b6b", "#feca57", "#48dbfb", "#1dd1a1", "#f368e0"];
+    for (let i = 0; i < 10; i++) {
+        const balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.left = Math.random() * 100 + "vw";
+        balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+        balloon.style.animationDuration = 5 + Math.random() * 5 + "s";
+        document.getElementById("balloons").appendChild(balloon);
+    }
+}
