@@ -1,4 +1,134 @@
-/* ... el resto de tu código CSS ... */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow: hidden;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #fff;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 5px #ff5e78;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+button {
+  background: #ff5e78;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff2e50;
+  transform: scale(1.1);
+}
+
+.hidden-message {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 15px;
+  text-shadow: 1px 1px 3px #333;
+}
+
+/* Globos */
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 60px;
+  height: 80px;
+  background: red;
+  border-radius: 50%;
+  animation: float 10s linear infinite;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 60px;
+  background: #fff;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(-120vh) translateX(0);
+  }
+}
+
+/* Nuevos estilos para los botones y la animación del video */
+.boton-enlace {
+  background: #ff5e78;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.boton-enlace:hover {
+  background: #ff2e50;
+  transform: scale(1.1);
+}
+
+.secret-page {
+    /* Estilos para la página secreta si fueran necesarios */
+}
+
+#secret-message {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 15px;
+  text-shadow: 1px 1px 3px #333;
+  text-align: center;
+}
+
+#play-video-btn {
+    background: #48dbfb;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+#play-video-btn:hover {
+    background: #1dd1a1;
+    transform: scale(1.1);
+}
 
 #video-chico-container {
     position: fixed;
@@ -9,13 +139,15 @@
 
 #animacion-chico {
     width: 200px;
+    /* Las siguientes líneas se han eliminado para quitar los bordes y la sombra */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
 }
 
-/* Nuevas reglas para el video de la chica */
 #video-chica-container {
     position: fixed;
-    bottom: 5px; /* misma distancia desde el borde inferior */
-    left: 20px;  /* ahora lo colocamos desde la izquierda */
+    bottom: 5px;
+    left: 20px;
     display: none;
 }
 
