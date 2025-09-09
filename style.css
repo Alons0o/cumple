@@ -132,8 +132,8 @@ button:hover {
 
 #video-container {
     position: fixed;
-    bottom: 5px;
-    right: 20px;
+    bottom: 2px;
+    right: 2px;
     display: none;
 }
 
